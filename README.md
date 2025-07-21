@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Technical Test Junior Front End
 
-## Getting Started
+Aplikasi ini dibangun menggunakan Next.js, React, dan Ant Design, dan berfungsi sebagai antarmuka untuk mengelola produk.
 
-First, run the development server:
+## Daftar Isi
 
+- [Persyaratan Sistem](#persyaratan-sistem)
+- [Langkah Instalasi](#langkah-instalasi)
+- [Menjalankan Aplikasi dalam mode Development](#menjalankan-aplikasi-dalam-mode-development)
+- [Fitur Aplikasi](#fitur-aplikasi)
+
+## Persyaratan Sistem
+
+- Node.js (versi 18 atau yang lebih baru)
+- Next.js (versi 14.x)
+- `npm` atau `yarn`
+- Ant Design (versi 5.x atau yang lebih baru)
+
+## Langkah Instalasi
+
+### Lakukan clone repositori ini
+
+  ```bash
+  git clone https://github.com/shawnhafizh/technical-test-fe.git
+  cd technical-test-fe
+  ```
+
+### Install Dependencies
+  Masuk ke folder utama proyek, lalu jalankan perintah:
+
+  Menggunakan `yarn`
+  ```bash
+  yarn install
+  ```
+  atau menggunakan `npm`
+  ```bash
+  npm install
+  ```
+
+## Menjalankan Aplikasi dalam mode Development (Tanpa Firebase)
+
+### Menyiapkan Backend
+
+Siapkan backend dari project ini, yaitu **technical-test-be**. Lalu, buka project tersebut dan lakukan beberapa hal serperti:
+1. **Install Depencencies**
+  
+    Jika project backend masih baru atau fresh. Jalankan perintah ini:
+
+    Menggunakan `yarn`
+    ```bash
+    yarn install
+    ```
+    atau menggunakan `npm`
+    ```bash
+    npm install
+    ```
+2. **Menjalankan Backend**
+
+    Jika sudah berhasil, jalankan backend dengan perintah:
+
+    Menggunakan `yarn`
+    ```bash
+    yarn dev
+    ```
+    atau menggunakan `npm`
+    ```bash
+    npm run dev
+    ```
+
+### Menjalankan Frontend
+Setelah proses menyiapkan backend berhasil, jalankan project frontend dengan:
+
+Menggunakan `yarm`
+```bash
+yarn dev
+```
+atau menggunakan `npm`
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Sekarang, aplikasi akan berjalan di [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Fitur Aplikasi
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Halaman Daftar Produk
+  - Tabel produk yang menampilkan:
+    1. Nama Produk
+    2. Harga
+    3. Kategori
+    4. Deskripsi (truncated dengan Tooltip saat di-hover)
+    5. Aksi (Edit, Hapus)
+  - Navigasi halaman (pagination).
+  - Real-time search box dengan  *debounce* 300ms untuk optimasi performa.
+  - Tombol "Create Product" untuk membuka modal menambahkan produk baru.
 
-## Learn More
+### Search Funtion
+  - Parameter pencarian dikirimkan ke backend untuk pemfilteran data berdasarkan **nama produk**, **kategori**, dan **deskripsi**.
 
-To learn more about Next.js, take a look at the following resources:
+### Modal Form (Create/Edit)
+  - Modal untuk create/edit produk.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
