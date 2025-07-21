@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import { Button, Card, Input, Modal, Space, Typography, Layout, Row, Col } from 'antd'
 import ProductTable from '@/components/ProductTable'
 import ProductFormModal from '@/components/ProductFormModal'
@@ -16,6 +16,7 @@ export default function ProductsPage() {
   const [page, setPage] = useState(1)
   const [total, setTotal] = useState(0)
   const [search, setSearch] = useState('')
+  const searchInputRef = useRef<NodeJS.Timeout | null>(null)
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [editingProduct, setEditingProduct] = useState<Product | undefined>()
@@ -34,6 +35,16 @@ export default function ProductsPage() {
     }
   }
 
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    if (searchInputRef.current) {
+      clearTimeout(searchInputRef.current)
+    }
+    searchInputRef.current = setTimeout(() => {
+      setSearch(value)
+      setPage(1)
+    }, 300)
+  }, [])
 
   const handleCreate = () => {
     setEditingProduct(undefined)
@@ -102,11 +113,7 @@ export default function ProductsPage() {
                       setSearch(value)
                       setPage(1)
                     }}
-                    onChange={(e) => {
-                      if (e.target.value === '') {
-                        setSearch('')
-                      }
-                    }}
+                    onChange={handleSearchChange}
                     className={styles.searchBar}
                   />
                   <Button type="primary" onClick={handleCreate}>
